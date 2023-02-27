@@ -16,9 +16,9 @@ class CreateBoxesTable extends Migration
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->text('memo');
-            $table->string('box_img');
+            $table->text('description')->nullable();
+            $table->text('memo')->nullable();
+            $table->string('box_img')->nullable();
             $table->unsignedBigInteger('user_id');
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
