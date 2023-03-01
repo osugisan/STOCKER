@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="card">
+    <div class="card shadow">
         <div class="card-body">
             <div class="font-weight-bold border-bottom pb-3 text-center" style="font-size: 20px">会員登録</div>
             <form method="POST" action="{{ route('register') }}" class="p-4">
