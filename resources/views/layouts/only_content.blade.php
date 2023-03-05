@@ -19,12 +19,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    {{-- FontAwesome --}}
+    <script src="https://kit.fontawesome.com/6fc1e898b5.js" crossorigin="anonymous"></script>
+
 </head>
 <body class="h-100 d-flex justify-content-center align-items-center">
     <div class="w-100">
         {{-- ロゴ画像 --}}
         <div class="d-flex justify-content-center">
-            <a href="route('top')"><img src="/images/logo.png" width="150px" height="75px"></a>    
+            <a href="{{ route('top') }}"><img src="/images/logo.png" width="150px" height="75px" style="object-fit: cover"></a>    
         </div> 
         <div class="d-flex justify-content-center mt-3">
             @yield('content')

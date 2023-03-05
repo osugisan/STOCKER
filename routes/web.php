@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('mypage')
+    ->namespace('Mypage')
+    ->middleware('auth')
+    ->group( function() {
+        Route::get('edit-form', 'ProfileController@editForm')->name('mypage.edit-form');
+        Route::post('edit', 'ProfileController@edit')->name('mypage.edit');
+    });
