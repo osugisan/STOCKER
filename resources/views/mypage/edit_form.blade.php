@@ -22,14 +22,16 @@
                     @csrf
 
                     {{-- アバター画像 --}}
-                    <input type="file" name="avatar_img" class="d-none" accept="image/png, image/jpeg, image/gif" id="avatar_img">
-                    <label for="avatar_img" class="my-3 d-flex justify-content-center">
-                        @if (!empty($user->avatar_img))
-                            <img src="/storage/avatars/{{ $user->avatar_img }}" class="shadow-lg rounded-circle" style="object-fit: cover; width: 150px; height: 150px;">
-                        @else
-                            <span><i class="fa-solid fa-circle-user fa-8x"></i></span>
-                        @endif
-                    </label>
+                    <span class="image-picker">
+                        <input type="file" name="avatar_img" class="d-none" accept="image/png, image/jpeg, image/gif" id="avatar_img">
+                        <label for="avatar_img" class="my-3 d-flex justify-content-center">
+                            @if (!empty($user->avatar_img))
+                                <img src="/storage/avatars/{{ $user->avatar_img }}" class="shadow-lg rounded-circle" style="object-fit: cover; width: 150px; height: 150px;">
+                            @else
+                                <span><i class="fa-solid fa-circle-user fa-8x"></i></span>
+                            @endif
+                        </label>
+                    </span>
 
                     <div class="form-group">
                         <label for="name">名前</label>

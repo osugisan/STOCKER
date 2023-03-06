@@ -27,15 +27,11 @@ class ProfileController extends Controller
 
         if ($request->has('avatar_img')) {
             $fileName = $this->saveAvatar($request->file('avatar_img'));
+            Storage::disk('public')->delete('avatars/'. $user->avatar_img);
             $user->avatar_img = $fileName;
         };
 
         $user->save();
-
-        // User::where('id', '$user_id')->update([
-        //     'name' => $request->input('name'),
-        //     // 'avatar_img' => $fileName,
-        // ]);
 
         return redirect()->back()
             ->with('status', 'プロフィールを変更しました');

@@ -22,6 +22,9 @@
     {{-- FontAwesome --}}
     <script src="https://kit.fontawesome.com/6fc1e898b5.js" crossorigin="anonymous"></script>
 
+    {{-- ファビコン --}}
+    <link rel="shortcut icon" href="{{ asset('/logo.ico') }}">
+
 </head>
 <body class="h-100 d-flex justify-content-center align-items-center">
     <div class="w-100">
