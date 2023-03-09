@@ -28,3 +28,11 @@ Route::prefix('mypage')
         Route::get('edit-form', 'ProfileController@editForm')->name('mypage.edit-form');
         Route::post('edit', 'ProfileController@edit')->name('mypage.edit');
     });
+
+    Route::prefix('box')
+        ->namespace('Box')
+        ->middleware('auth')
+        ->group( function() {
+            Route::get('new', 'BoxController@new')->name('box.new');
+            Route::post('create', 'BoxController@create')->name('box.create');
+        });

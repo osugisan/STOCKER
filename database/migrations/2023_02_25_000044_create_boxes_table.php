@@ -15,7 +15,7 @@ class CreateBoxesTable extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->text('memo')->nullable();
             $table->string('box_img')->nullable();

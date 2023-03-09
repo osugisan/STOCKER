@@ -27,7 +27,9 @@ class ProfileController extends Controller
 
         if ($request->has('avatar_img')) {
             $fileName = $this->saveAvatar($request->file('avatar_img'));
-            Storage::disk('public')->delete('avatars/'. $user->avatar_img);
+            if (!empty($user->avatar_img)) {
+                Storage::disk('public')->delete('avatars/'. $user->avatar_img);
+            }
             $user->avatar_img = $fileName;
         };
 
@@ -43,6 +45,7 @@ class ProfileController extends Controller
         Image::make($file)->fit(150, 150)->save($tempPath);
         $filePath = Storage::disk('public')
             ->putFile('avatars', new File($tempPath));
+        unlink($tempPath);
         
         return basename($filePath);
     }

@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid mt-3">
-        <div>
+    <div class="container-fluid">
+        <div class="mt-3
+        ">
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}

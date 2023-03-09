@@ -10,11 +10,11 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false">
-                    <img src="storage/avatars/{{ $user->avatar_img }}" class="rounded-circle" style="object-fit: cover; height: 30px">
+                    <img src="{{ asset('storage/avatars/'. $user->avatar_img) }}" class="rounded-circle" style="object-fit: cover; height: 30px">
                     <span>{{ $user->name }}</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="avatar_dropdown">
-                    <a href="#" class="dropdown-item">
+                    <a href="{{ route('box.new') }}" class="dropdown-item">
                         <i class="fas fa-solid fa-boxes-packing text-left" style="width: 30px"></i> ボックス登録
                     </a>
                     <a href="#" class="dropdown-item">
