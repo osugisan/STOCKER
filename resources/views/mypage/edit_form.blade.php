@@ -1,11 +1,11 @@
-@extends('layouts.only_content')
+@extends('layouts.app')
 
 @section('title')
     プロフィール編集
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -14,7 +14,7 @@
             @endif
         </div>
 
-        <div class="card shadow">
+        <div class="card shadow mt-4">
             <div class="card-body">
                 <div class="font-weight-bold border-bottom pb-3 text-center" style="font-size: 20px">プロフィール編集</div>
 
