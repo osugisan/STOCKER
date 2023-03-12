@@ -28,4 +28,14 @@ class EditRequest extends FormRequest
             'avatar_img' => ['file', 'image'],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => '名前',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
+            'avatar_img' => 'アバター画像',
+        ];
+    }
 }

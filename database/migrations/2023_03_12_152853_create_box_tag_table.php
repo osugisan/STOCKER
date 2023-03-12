@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemTagTable extends Migration
+class CreateBoxTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateItemTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_tag', function (Blueprint $table) {
+        Schema::create('box_tag', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('box_id');
             $table->unsignedBigInteger('tag_id');
             
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('box_id')->references('id')->on('boxes')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateItemTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_tag');
+        Schema::dropIfExists('box_tag');
     }
 }

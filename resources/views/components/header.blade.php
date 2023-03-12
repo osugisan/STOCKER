@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm">
     <div class="container-fluid">
-        <a href="{{ url('/') }}" class="navbar-brand py-0">
+        <a href="{{ route('box.index') }}" class="navbar-brand py-0">
             <img src="/images/logo.png" alt="STOCKER" style="height: 39px">
         </a>
         <div class="d-flex">
@@ -10,7 +10,11 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false">
-                    <img src="{{ asset('storage/avatars/'. $user->avatar_img) }}" class="rounded-circle" style="object-fit: cover; height: 30px">
+                    @if (!empty($user->avatar_img))
+                        <img src="{{ asset('storage/avatars/'. $user->avatar_img) }}" class="rounded-circle" style="object-fit: cover; height: 30px">
+                    @else
+                        <img src="{{ asset('/images/user.png') }}" class="rounded-circle" style="object-fit: cover; height: 30px;">
+                    @endif
                     <span>{{ $user->name }}</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="avatar_dropdown">

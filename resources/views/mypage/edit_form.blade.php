@@ -29,7 +29,7 @@
                             @if (!empty($user->avatar_img))
                                 <img src="/storage/avatars/{{ $user->avatar_img }}" class="shadow-lg rounded-circle" style="object-fit: cover; width: 150px; height: 150px;">
                             @else
-                                <span><i class="fa-solid fa-circle-user fa-8x"></i></span>
+                                <img src="/images/user.png" class="rounded-circle" style="object-fit: cover; width: 150px; height: 150px;">
                             @endif
                         </label>
                     </span>

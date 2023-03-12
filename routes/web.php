@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('top');
+Route::get('/', 'Box\BoxController@index')->middleware('auth')->name('box.index');
 
 Auth::routes();
 
@@ -35,4 +33,7 @@ Route::prefix('mypage')
         ->group( function() {
             Route::get('new', 'BoxController@new')->name('box.new');
             Route::post('create', 'BoxController@create')->name('box.create');
+            Route::get('{box}/edit-form', 'BoxController@editForm')-> name('box.edit-form');
+            Route::post('{box}/edit', 'BoxController@edit')->name('box.edit');
+            Route::get('{box}', 'BoxController@show')-> name('box.show');
         });
