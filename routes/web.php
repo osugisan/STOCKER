@@ -27,13 +27,22 @@ Route::prefix('mypage')
         Route::post('edit', 'ProfileController@edit')->name('mypage.edit');
     });
 
-    Route::prefix('box')
-        ->namespace('Box')
-        ->middleware('auth')
-        ->group( function() {
-            Route::get('new', 'BoxController@new')->name('box.new');
-            Route::post('create', 'BoxController@create')->name('box.create');
-            Route::get('{box}/edit-form', 'BoxController@editForm')-> name('box.edit-form');
-            Route::post('{box}/edit', 'BoxController@edit')->name('box.edit');
-            Route::get('{box}', 'BoxController@show')-> name('box.show');
-        });
+Route::prefix('box')
+    ->namespace('Box')
+    ->middleware('auth')
+    ->group( function() {
+        Route::get('new', 'BoxController@new')->name('box.new');
+        Route::post('create', 'BoxController@create')->name('box.create');
+        Route::get('{box}/edit-form', 'BoxController@editForm')-> name('box.edit-form');
+        Route::post('{box}/edit', 'BoxController@edit')->name('box.edit');
+        Route::get('{box}', 'BoxController@show')-> name('box.show');
+    });
+
+  Route::prefix('tag')
+    ->namespace('Tag')
+    ->middleware('auth')
+    ->group( function() {
+        Route::get('index', 'TagController@index')->name('tag.index');
+        Route::post('create', 'TagController@create')->name('tag.create');
+        Route::post('edit', 'TagController@edit')->name('tag.edit');
+    });

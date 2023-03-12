@@ -24,8 +24,8 @@
                     <a href="#" class="dropdown-item">
                         <i class="fas fa-solid fa-cart-plus text-left" style="width: 30px"></i> アイテム編集
                     </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="fa-solid fa-tags text-left" style="width: 30px"></i> タグ編集
+                    <a href="{{ route('tag.index') }}" class="dropdown-item">
+                        <i class="fa-solid fa-tags text-left" style="width: 30px"></i> タグ登録/編集
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="fa-solid fa-file-import text-left" style="width: 30px"></i>  アイテム入庫

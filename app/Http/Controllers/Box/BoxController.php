@@ -50,7 +50,8 @@ class BoxController extends Controller
 
     public function index()
     {
-        $boxes = Box::orderBy('id', 'DESC')->get();
+        $user = Auth::user();
+        $boxes = Box::where('user_id', '=', $user->id)->orderBy('id', 'DESC')->get();
         return view('box.index')
             ->with('boxes', $boxes);
     }
@@ -82,7 +83,7 @@ class BoxController extends Controller
         ]);
 
         return redirect()->route('box.index')
-            ->with('status', 'ボックスを登録しました'); 
+            ->with('status', 'ボックス内容を変更しました'); 
     }
 
     private function saveBoxImg(UploadedFile $file): string
