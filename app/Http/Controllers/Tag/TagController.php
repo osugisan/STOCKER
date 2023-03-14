@@ -17,6 +17,7 @@ class TagController extends Controller
             ->with([
                 'user' => Auth::user(),
                 'tags' => $tags,
+                'index' => 1,
             ]);
     }
 
@@ -29,5 +30,31 @@ class TagController extends Controller
 
         return redirect()->back()
             ->with('status', 'タグを登録しました');
+    }
+
+    public function edit(TagRequest $request, Tag $tag)
+    {
+        Tag::whereId($tag->id)->update([
+            'name' => $request->input('name'),
+            'user_id' => $request->input('user_id'),
+        ]);
+
+        return redirect()->back()
+            ->with([
+                'status', 'タグを変更しました',
+                'delete_flg', false,
+            ]);
+    }
+
+    public function delete($id)
+    {
+        $tag = Tag::find($id);
+        $tag->delete();
+
+        return redirect()->back()
+            ->with([
+                'status', 'タグを削除しました',
+                'delete_flg', true,
+            ]);
     }
 }

@@ -25,7 +25,14 @@ class TagRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:20', 'string', Rule::unique('tags')->ignore($this->name)],
+            'name' => ['required', 'max:20', 'string', Rule::unique('tags')->ignore($this->tag)],
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'タグ名'
         ];
     }
 }

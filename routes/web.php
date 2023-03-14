@@ -44,5 +44,6 @@ Route::prefix('box')
     ->group( function() {
         Route::get('index', 'TagController@index')->name('tag.index');
         Route::post('create', 'TagController@create')->name('tag.create');
-        Route::post('edit', 'TagController@edit')->name('tag.edit');
+        Route::post('{tag}/edit/', 'TagController@edit')->name('tag.edit');
+        Route::delete('{id}', 'TagController@delete')->name('tag.delete');
     });
