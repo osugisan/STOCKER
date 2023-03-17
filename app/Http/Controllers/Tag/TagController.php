@@ -40,10 +40,7 @@ class TagController extends Controller
         ]);
 
         return redirect()->back()
-            ->with([
-                'status', 'タグを変更しました',
-                'delete_flg', false,
-            ]);
+            ->with('status', 'タグを変更しました');
     }
 
     public function delete($id)
@@ -52,9 +49,6 @@ class TagController extends Controller
         $tag->delete();
 
         return redirect()->back()
-            ->with([
-                'status', 'タグを削除しました',
-                'delete_flg', true,
-            ]);
+            ->with('status', 'タグを削除しました');
     }
 }

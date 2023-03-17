@@ -58,6 +58,7 @@ class BoxController extends Controller
 
     public function show(Box $box)
     {
+        dd(Box::all()->pluck('name', 'user_id'));
         return view('box.show')
             ->with([
                 'box' => $box,

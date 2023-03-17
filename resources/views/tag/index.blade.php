@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="mt-2">
             @if (session('status'))
-                <div class="alert {{ $delete_flg == true ? 'alert-danger' : 'alert-success' }}" role="alert">
+                <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
             @endif
@@ -91,6 +91,10 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <button class="btn btn-outline-success col-10">一 括 変 更</button>
         </div>
     </div>
 @endsection
