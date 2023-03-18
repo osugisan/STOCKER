@@ -17,6 +17,6 @@ class Tag extends Model
 
     public function boxes()
     {
-        return $this->belongsToMany(Box::class, 'box_tags')->withPivot('id');
+        return $this->belongsToMany(Box::class, 'box_tags');
     }
 }

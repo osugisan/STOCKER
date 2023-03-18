@@ -48,14 +48,11 @@ class BoxController extends Controller
     }
 
     public function editForm(Box $box)
-    {
-        $user = Auth::user();
-        $tags = $user->tags;
+    {        
         return view('box.edit_form')
             ->with([
                 'box' => $box,
-                'user' => $user,
-                'tags' => $tags,
+                'user' => Auth::user(),
             ]);
     }
 
@@ -85,7 +82,7 @@ class BoxController extends Controller
             };
         }
 
-        $box = Box::whereId($box->id)->update([
+        Box::whereId($box->id)->update([
             'box_img' => $fileName ?? $box->box_img,
             'name' => $request->input('name'),
             'description' => $request->input('description'),
