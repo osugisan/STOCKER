@@ -13,7 +13,7 @@ class CreateBoxTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('box_tag', function (Blueprint $table) {
+        Schema::create('box_tags', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('box_id');
             $table->unsignedBigInteger('tag_id');

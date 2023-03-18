@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Box\CreateRequest;
 use App\Http\Requests\Mypage\EditRequest;
 use App\Models\Box;
+use App\Models\BoxTag;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -17,8 +18,13 @@ class BoxController extends Controller
 {
     public function new()
     {
+        $user = Auth::user();
+        $tags = $user->tags;
         return view('box.new')
-            ->with('user', Auth::user());
+            ->with([
+                'user' => $user,
+                'tags' => $tags,
+            ]);
     }
 
     public function create(CreateRequest $request)
@@ -27,7 +33,7 @@ class BoxController extends Controller
             $fileName = $this->saveBoxImg($request->file('box_img'));
         }
 
-        Box::create([
+        $box = Box::create([
             'box_img' => $fileName ?? null,
             'name' => $request->input('name'),
             'description' => $request->input('description'),
@@ -35,16 +41,21 @@ class BoxController extends Controller
             'user_id' => $request->input('user_id'),
         ]);
 
+        $box->tags()->attach($request->input('tag_ids'));        
+
         return redirect()->route('box.index')
             ->with('status', 'ボックスを登録しました');
     }
 
     public function editForm(Box $box)
     {
+        $user = Auth::user();
+        $tags = $user->tags;
         return view('box.edit_form')
             ->with([
                 'box' => $box,
-                'user' => Auth::user(),
+                'user' => $user,
+                'tags' => $tags,
             ]);
     }
 
@@ -58,7 +69,6 @@ class BoxController extends Controller
 
     public function show(Box $box)
     {
-        dd(Box::all()->pluck('name', 'user_id'));
         return view('box.show')
             ->with([
                 'box' => $box,
@@ -75,13 +85,15 @@ class BoxController extends Controller
             };
         }
 
-        Box::whereId($box->id)->update([
+        $box = Box::whereId($box->id)->update([
             'box_img' => $fileName ?? $box->box_img,
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'memo' => $request->input('memo'),
             'user_id' => $request->input('user_id'),
         ]);
+
+        $box->tags()->sync($request->input('tag_ids'));
 
         return redirect()->route('box.index')
             ->with('status', 'ボックス内容を変更しました'); 

@@ -66,7 +66,7 @@
                                     <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $tag->name }}" required>
+                                        <input type="text" name="name" class="form-control-sm @error('name') is-invalid @enderror" value="{{ $tag->name }}" required>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">

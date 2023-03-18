@@ -12,10 +12,11 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::orderBy('id')->get();
+        $user = Auth::user();
+        $tags = $user->tags;
         return view('tag.index')
             ->with([
-                'user' => Auth::user(),
+                'user' => $user,
                 'tags' => $tags,
                 'index' => 1,
             ]);

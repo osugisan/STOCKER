@@ -65,6 +65,16 @@
                             </span>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        <span class="mb-2 d-block">タグ</span>
+                        @foreach ($user->tags as $tag)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="tag_ids[]" value="{{ $tag->id }}" id="{{ $tag->id }}" {{ $tag->box_id == $box->id ? 'checked' : '' }}>
+                                <label class="form-check-label" for="{{ $tag->id }}">{{ $tag->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
     
                     <div class="form-group mb-0">
                         <button type="submit" class="btn btn-block btn-primary">

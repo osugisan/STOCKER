@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Box::class);
     }
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
 }
