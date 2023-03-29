@@ -59,13 +59,32 @@ class BoxController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $boxes = Box::where('user_id', '=', $user->id)->orderBy('id', 'DESC')->get();
+        $boxes = Box::where('user_id', '=', $user->id)
+            ->orderBy('id', 'DESC')
+            ->with('tags')
+            ->get();
+
+        return view('box.index')
+            ->with('boxes', $boxes);
+    }
+
+    public function tagIndex($id)
+    {
+        $user = Auth::user();
+        $box_ids = BoxTag::where('tag_id', $id)->pluck('box_id');
+        $boxes= Box::whereIn('id', $box_ids)
+            ->where('user_id', '=', $user->id)
+            ->orderBy('id', 'DESC')
+            ->with('tags')
+            ->get();
+
         return view('box.index')
             ->with('boxes', $boxes);
     }
 
     public function show(Box $box)
     {
+        $box = $box->with('tags');
         return view('box.show')
             ->with([
                 'box' => $box,

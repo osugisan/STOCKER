@@ -36,9 +36,10 @@ Route::prefix('box')
         Route::get('{box}/edit-form', 'BoxController@editForm')-> name('box.edit-form');
         Route::post('{box}/edit', 'BoxController@edit')->name('box.edit');
         Route::get('{box}', 'BoxController@show')-> name('box.show');
+        Route::get('{id}/tag-search', 'BoxController@TagIndex')-> name('box.tag-search');
     });
-
-  Route::prefix('tag')
+    
+Route::prefix('tag')
     ->namespace('Tag')
     ->middleware('auth')
     ->group( function() {
@@ -46,4 +47,17 @@ Route::prefix('box')
         Route::post('create', 'TagController@create')->name('tag.create');
         Route::post('{tag}/edit/', 'TagController@edit')->name('tag.edit');
         Route::delete('{id}', 'TagController@delete')->name('tag.delete');
+    });
+
+Route::prefix('item')
+    ->namespace('Item')
+    ->middleware('auth')
+    ->group( function() {
+        Route::get('new', 'ItemController@new')->name('item.new');
+        Route::post('create', 'ItemController@create')->name('item.create');
+        Route::get('{item}/edit-form', 'ItemController@editForm')->name('item.edit-form');
+        Route::post('{item}/edit', 'ItemController@edit')->name('item.edit');
+        Route::post('{item}/delete', 'ItemController@delete')->name('item.delete');
+        Route::get('search-form', 'ItemController@searchForm')->name('item.search-form');
+        Route::get('search-form', 'ItemController@searchForm')->name('item.search-form');
     });

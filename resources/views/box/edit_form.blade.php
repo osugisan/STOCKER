@@ -68,12 +68,14 @@
 
                     <div class="form-group">
                         <span class="mb-2 d-block">タグ</span>
-                        @foreach ($box->tags as $tag)
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="tag_ids[]" value="{{ $tag->id }}" id="{{ $tag->id }}" {{ $tag->pivot->box_id == $box->id ? 'checked' : '' }}>
-                                <label class="form-check-label" for="{{ $tag->id }}">{{ $tag->name }}</label>
-                            </div>
-                        @endforeach
+                        {{-- @foreach ($box->tags as $tag) --}}
+                            @foreach ($user->tags as $tag)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="tag_ids[]" value="{{ $tag->id }}" id="{{ $tag->id }}" {{ $box->id ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="{{ $tag->id }}">{{ $tag->name }}</label>
+                                </div>
+                            @endforeach
+                        {{-- @endforeach --}}
                     </div>
     
                     <div class="form-group mb-0">

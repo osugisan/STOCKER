@@ -18,6 +18,6 @@ class Box extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'box_tags');
+        return $this->belongsToMany(Tag::class, 'box_tags')->withTimestamps();
     }
 }
